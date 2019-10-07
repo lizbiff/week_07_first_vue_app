@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>To do...📝</title>
+  <link rel="stylesheet" href="./main.css">
+</head>
+<body>
+  <div id="app">
+    <h1>To do...</h1>
+    <div class="intro">
+      <p>Busy day? Dont want to forget what youve got on? Now you can save and prioritise your day with our new app.</p>
+    </div>
+
+    <div class="form">
+    <form v-on:submit.prevent="saveNewTodo">
+      <label for="new-todo">What do you have to do?</label>
+      <input id="new-todo" type="text" v-model="newTodo.task"/>
+      <div class="priority-buttons">
+        <input type="radio" value="low" v-model="newTodo.priority" id="low"><label for="low">Low priority</label><br>
+        <input type="radio" v-model="newTodo.priority" value="medium" id="medium"><label for="medium">Medium priority</label><br>
+        <input type="radio" v-model="newTodo.priority" value="high" id="high"><label for="high">High priority</label><br>
+      </div>
+      <input type="submit" value="Save"/>
+    </form>
+    </div>
+
+    <ul>
+      <li v-for="(item, index) in todos" :class="item.priority" class="priority">
+        {{ item.task }}
+
+      </li>
+    </ul>
+
+  </div>
+<script src="./js/bundle.js"></script>
+</body>
+</html>
